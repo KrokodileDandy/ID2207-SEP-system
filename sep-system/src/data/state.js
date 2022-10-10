@@ -7,15 +7,18 @@
  * @example import { dbData } from "../data/state";
  */
 
+// Generate new IDs for task items
+import { v4 as uuidv4 } from "uuid";
+
 var dbData = {
     todos: [
         {
-            id: 1,
+            id: uuidv4(),
             title: "Task 1",
             completed: true
         },
         {
-            id: 2,
+            id: uuidv4(),
             title: "Task 2",
             completed: false
         }
