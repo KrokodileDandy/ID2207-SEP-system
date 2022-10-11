@@ -1,12 +1,24 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
   render() {
     return (
       <nav>
-        NavBar:
-        <span>Nav item 1</span>
-        <span>Nav item 2</span>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/events">Events</Link>
+          </li>
+          <li>
+            <Link to="/tasks">Tasks</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
       </nav>
     )
   }

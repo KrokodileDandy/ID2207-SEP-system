@@ -25,7 +25,7 @@ class TodoForm extends Component {
   render() {
     return (
       <div>
-        <h2>Task List</h2>
+        Add a new task:
         <form
           onSubmit={this.handleSubmit}
           className="form-container">

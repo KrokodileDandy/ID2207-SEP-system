@@ -5,12 +5,14 @@ import { Route, Routes } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 // Pages
+import Home from "../pages/Home";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
 
 // Components
-import TodoList from "./TodoList";
 import NavBar from "./Navbar";
+import EventList from "./EventList";
+import TodoList from "./TodoList";
 
 class SepContainer extends React.Component {
   state = dbData;
@@ -56,7 +58,10 @@ class SepContainer extends React.Component {
       <div>
         <NavBar />
         <Routes>
-          <Route path="/" element={
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/events" element={
+            <EventList eventPlans={this.state.eventPlans} />}></Route>
+          <Route path="/tasks" element={
             <TodoList
               todos={this.state.todos}
               handleChangeProps={this.handleChange}
