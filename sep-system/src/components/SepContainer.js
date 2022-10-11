@@ -1,7 +1,12 @@
 import React from "react";
 import { dbData } from "../data/state";
+import { Route, Routes } from "react-router-dom";
 // Generate new IDs for task items
 import { v4 as uuidv4 } from "uuid";
+
+// Pages
+import About from "../pages/About";
+import NotFound from "../pages/NotFound";
 
 // Components
 import TodoList from "./TodoList";
@@ -35,16 +40,33 @@ class SepContainer extends React.Component {
     });
   };
 
+  setUpdate = (updatedTitle, id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
+        }
+        return todo;
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <NavBar />
-        <h1>SEP Container</h1>
-        {/* The components on this page will later on be invisible, based on the navbar input. */}
-        <TodoList
-          todos={this.state.todos}
-          handleChangeProps={this.handleChange}
-          addTodoProps={this.addTodoItem} />
+        <Routes>
+          <Route path="/" element={
+            <TodoList
+              todos={this.state.todos}
+              handleChangeProps={this.handleChange}
+              addTodoProps={this.addTodoItem}
+              setUpdate={this.setUpdate} />}>
+          </Route>
+          <Route path="/about" element={<About />}>
+          </Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
       </div>
     )
   }
