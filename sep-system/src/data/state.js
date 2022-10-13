@@ -11,6 +11,19 @@
 import { v4 as uuidv4 } from "uuid";
 
 var dbData = {
+    validUsers: [
+        {
+            username: "ProductionManager",
+            password: "ProducttionManagerPassword",
+        },
+        {
+            username: "Employee",
+            password: "EmployeePassword",
+        },{
+            username: "CustomerServiceManager",
+            password: "CustomerServiceManagerPassword",
+        },
+    ],
     eventPlans: [
         {
             name: "Wedding - Mr. John Smith and Ms. Svenja Swan",
