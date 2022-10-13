@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
+import Login from "../pages/Login";
 
 // Components
 import NavBar from "./Navbar";
@@ -71,6 +72,7 @@ class SepContainer extends React.Component {
           <Route path="/about" element={<About />}>
           </Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/login" element={<Login />}/>
         </Routes>
       </div>
     )
