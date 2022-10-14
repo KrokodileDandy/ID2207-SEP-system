@@ -14,12 +14,13 @@ var dbData = {
     validUsers: [
         {
             username: "ProductionManager",
-            password: "ProducttionManagerPassword",
+            password: "ProductionManagerPassword",
         },
         {
             username: "Employee",
             password: "EmployeePassword",
-        },{
+        },
+        {
             username: "CustomerServiceManager",
             password: "CustomerServiceManagerPassword",
         },
