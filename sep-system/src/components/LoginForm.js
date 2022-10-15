@@ -16,13 +16,10 @@ function LoginForm() {
     const checkUsernameAndPassword = () => {
         var correctUsernameAndPassword = false;
         dbData.validUsers.map((user) => {
-            console.log('user.username: ' + user.username);
-            console.log('user.password: ' + user.username);
             if (user.username == username
                 && user.password == password) {
                     correctUsernameAndPassword = true;
                     handleUsername(user.username);
-                    console.log('USERNAME: ' + username);
                     return correctUsernameAndPassword;
                 }
             });
@@ -30,13 +27,11 @@ function LoginForm() {
     };
 
     const handleOnChangeUsername = (e) => {
-        //console.log('USERNAME: ' + username);
         e.preventDefault()
         setUsername(e.target.value);
     };
 
     const handleOnChangePassword = (e) => {
-        //console.log('PASSWORD: ' + password);
         e.preventDefault()
         setPassword(e.target.value);
     };
