@@ -1,13 +1,30 @@
+import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter } from "react-router-dom";
-import SepContainer from "./components/SepContainer";
+import { BrowserRouter, Routes } from "react-router-dom";
+import Login from './pages/Login';
+import useAuthenticateContext from './context/useAuthenticate';
+import { Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import EventList from './components/EventList';
+import TodoList from './components/TodoList';
+import { dbData } from './data/state';
 
 function App() {
+  const [username, setUser] = useState("");
   return (
     <div className="App">
-      <BrowserRouter>
-        <SepContainer />
-      </BrowserRouter>
+      <useAuthenticateContext.Provider value={{username, setUser}}>
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login/>}/>
+              <Route path="/events" element={<EventList eventPlans={dbData.eventPlans}/>}/>
+              <Route path="/tasks" element={<TodoList todos={dbData.todos}/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/home" element={<Home/>}/>
+            </Routes>
+        </BrowserRouter>
+      </useAuthenticateContext.Provider>
     </div>
   );
 }
