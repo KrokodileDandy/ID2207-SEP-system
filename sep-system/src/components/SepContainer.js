@@ -59,7 +59,7 @@ class SepContainer extends React.Component {
       <div>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Login />}></Route>
           <Route path="/events" element={
             <EventList eventPlans={this.state.eventPlans} />}></Route>
           <Route path="/tasks" element={
@@ -72,7 +72,7 @@ class SepContainer extends React.Component {
           <Route path="/about" element={<About />}>
           </Route>
           <Route path="*" element={<NotFound />}></Route>
-          <Route path="/login" element={<Login />}/>
+          <Route path="/home" element={<Home />}/>
         </Routes>
       </div>
     )
