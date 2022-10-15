@@ -1,67 +1,73 @@
-import React, { Component } from "react";
+import React, { Component, useContext, useEffect, useState } from "react";
+import useAuthenticateContext from "../context/useAuthenticate";
 import { dbData } from "../data/state";
-import { Link } from "react-router-dom";
-class LoginForm extends Component {
-    state = {
-        username: "",
-        password: ""
-    };
+import { useNavigate } from "react-router-dom";
+
+export const UserContext = React.createContext();
+
+
+function LoginForm() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const { setUser } = useContext(useAuthenticateContext);
+    const handleUsername = (username) => setUser(username);
+    const navigate = useNavigate();
     
-    checkUsernameAndPassword = e => {
-        e.preventDefault();
+    const checkUsernameAndPassword = () => {
         var correctUsernameAndPassword = false;
         dbData.validUsers.map((user) => {
-            if (user.username == this.state.username
-                && user.password == this.state.password) {
+            console.log('user.username: ' + user.username);
+            console.log('user.password: ' + user.username);
+            if (user.username == username
+                && user.password == password) {
                     correctUsernameAndPassword = true;
+                    handleUsername(user.username);
+                    console.log('USERNAME: ' + username);
                     return correctUsernameAndPassword;
                 }
             });
             return correctUsernameAndPassword;
-        };
-        
-        onChange = e => {
-            this.setState({
-                [e.target.name]: e.target.value
-            });
-        };
-        
-        handleSubmit = e => {
-        e.preventDefault();
-        if (this.checkUsernameAndPassword(e)) {
-            // Write logic here
-            alert("Correct username and password");
-        }
-        else {
-            // Write logic here
-            alert("Invalid username or password");
-        }
     };
 
-  render() {
+    const handleOnChangeUsername = (e) => {
+        //console.log('USERNAME: ' + username);
+        e.preventDefault()
+        setUsername(e.target.value);
+    };
+
+    const handleOnChangePassword = (e) => {
+        //console.log('PASSWORD: ' + password);
+        e.preventDefault()
+        setPassword(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        checkUsernameAndPassword() ? navigate("/tasks") : alert("Invalid username or password");
+    };
+
     return (
       <div>
         <form
-          onSubmit={this.handleSubmit}
+          onSubmit={e => handleSubmit(e)}
           className="form-container">
             <input 
                 aria-label="Username"
                 name="username"
                 type="text"
                 placeholder="Username"
-                value={this.state.title}
-                onChange={this.onChange} />
+                value={username}
+                onChange={e => handleOnChangeUsername(e)} />
             <input
                 aria-label="Password"
                 name="password"
                 type="textarea"
                 placeholder="Password"
-                value={this.state.description}
-                onChange={this.onChange} />
+                value={password}
+                onChange={e => handleOnChangePassword(e)} />
             <button>Login</button>
         </form>
       </div>
     )
-  }
-}
+  };
 export default LoginForm;
