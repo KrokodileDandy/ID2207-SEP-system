@@ -9,6 +9,7 @@ import About from './pages/About';
 import EventList from './components/EventList';
 import TodoList from './components/TodoList';
 import { dbData } from './data/state';
+import SepContainer from './components/SepContainer';
 
 function App() {
   const [username, setUser] = useState("");
@@ -16,13 +17,14 @@ function App() {
     <div className="App">
       <useAuthenticateContext.Provider value={{username, setUser}}>
         <BrowserRouter>
-            <Routes>
+            {/* <Routes>
               <Route path="/" element={<Login/>}/>
               <Route path="/events" element={<EventList eventPlans={dbData.eventPlans}/>}/>
               <Route path="/tasks" element={<TodoList todos={dbData.todos}/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/home" element={<Home/>}/>
-            </Routes>
+            </Routes> */}
+            <SepContainer/>
         </BrowserRouter>
       </useAuthenticateContext.Provider>
     </div>
