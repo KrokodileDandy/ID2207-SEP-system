@@ -27,11 +27,13 @@ var dbData = {
     ],
     eventPlans: [
         {
+            id: uuidv4(),
             name: "Wedding - Mr. John Smith and Ms. Svenja Swan",
             client: "Mr. Smith",
             date: "31.10.2022"
         },
         {
+            id: uuidv4(),
             name: "Funeral - Mr. Gerald Smith",
             client: "Mr. Smith",
             date: "30.10.2022"

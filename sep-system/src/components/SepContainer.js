@@ -54,6 +54,42 @@ class SepContainer extends React.Component {
     })
   }
 
+  handleEventChange = (id) => {
+    this.setState(prevState => ({
+      eventPlans: prevState.eventPlans.map(event => {
+        if (event.id === id) {
+          return {
+            ...event,
+          };
+        }
+        return event;
+      }),
+    }))
+  };
+
+  addEventItem = (name, client, date) => {
+    const newEvent = {
+      id: uuidv4(),
+      name: name,
+      client: client,
+      date: date
+    };
+    this.setState({
+      eventPlans: [...this.state.todos, newEvent]
+    });
+  };
+
+  setEventUpdate = (updatedName, id) => {
+    this.setState({
+      todos: this.state.eventPlans.map(event => {
+        if (event.id === id) {
+          event.name = updatedName;
+        }
+        return event;
+      })
+    })
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +97,12 @@ class SepContainer extends React.Component {
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/events" element={
-            <EventList eventPlans={this.state.eventPlans} />}></Route>
+            <EventList 
+              eventPlans={this.state.eventPlans} 
+              handleChangeProps={this.handleChange}
+              addEventProps={this.addEventItem}
+              setUpdate={this.setEventUpdate} />}>
+          </Route>
           <Route path="/tasks" element={
             <TodoList
               todos={this.state.todos}

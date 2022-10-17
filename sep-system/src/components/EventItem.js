@@ -3,11 +3,10 @@ import React from "react";
 class EventItem extends React.Component {
 
   render() {
-    const { name, date } = this.props.event;
-
+    const { name, client, date } = this.props.event;
     return (
       <li>
-        {name} ({date})
+        Event: {name} <br/> Date: {date} <br/>Client: {client} <br/><br/>
       </li>
     )
   }
