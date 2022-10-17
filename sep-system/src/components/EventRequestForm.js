@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class EventRequestForm extends Component {
   state = {
-    name1: "",
+    name: "",
     client: "",
     date: ""
   };
@@ -15,17 +15,29 @@ class EventRequestForm extends Component {
 
   onChangeName = e => {
     this.setState({
-        name1: e.target.value
+        name: e.target.value,
+    });
+  };
+
+  onChangeClient = e => {
+    this.setState({
+        client: e.target.value,
+    });
+  };
+
+  onChangeDate = e => {
+    this.setState({
+        date: e.target.value,
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.name1.trim()) {
-      this.props.addEventProps(this.state.name1);
-      this.setState({name1: ""});
+    if (this.state.name.trim()) {
+      this.props.addEventProps(this.state.name, this.state.client, this.state.date);
+      this.setState({name: "", client:"", date: ""});
     } else {
-      alert("Please write a name");
+      alert("Please write a name, client and date");
     }
   }
 
@@ -41,7 +53,7 @@ class EventRequestForm extends Component {
                 name="event"
                 type="textarea"
                 placeholder="Event Name..."
-                value={this.state.name1}
+                value={this.state.name}
                 onChange={this.onChangeName} />
             <input
                 aria-label="client"
@@ -49,14 +61,14 @@ class EventRequestForm extends Component {
                 type="textarea"
                 placeholder="Client..."
                 value={this.state.client}
-                onChange={this.onChange} />
+                onChange={this.onChangeClient} />
             <input
                 aria-label="date"
                 name="date"
                 type="textarea"
                 placeholder="Date..."
                 value={this.state.date}
-                onChange={this.onChange} />
+                onChange={this.onChangeDate} />
             <button>Add</button>
         </form>
       </div>

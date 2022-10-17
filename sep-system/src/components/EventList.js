@@ -15,10 +15,11 @@ class EventList extends React.Component {
             <EventItem
               key={event.id}
               event={event} 
-              handleChangeProps={this.props.handleChangeProps}
-              setUpdate={this.props.setUpdate}/>
+              />
           ))}
         </ul>
+        <h2>Inbox</h2>
+
       </div>
     )
   }
