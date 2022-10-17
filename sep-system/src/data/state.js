@@ -65,6 +65,25 @@ var dbData = {
             title: "Task 2",
             completed: false
         }
+    ],
+    inbox: [
+        {
+            id: uuidv4(),
+            name: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            client: "Mr. Smith",
+            date: "31.10.2022",
+            budget: "250000 SEK",
+            preferences: "Flowers, food, band, ceremony, facility"
+        },
+        {
+            id: uuidv4(),
+            name: "Funeral - Mr. Gerald Smith",
+            client: "Mr. Smith",
+            date: "30.10.2022",
+            budget: "20000 SEK",
+            preferences: "Food, flowers"
+        }
+        
     ]
 };
 

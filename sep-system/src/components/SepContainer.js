@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
+import Inbox from "../pages/Inbox";
 
 // Components
 import NavBar from "./Navbar";
@@ -89,6 +90,7 @@ class SepContainer extends React.Component {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/home" element={<Home />}/>
+          <Route path="/inbox" element={<Inbox />}/>
         </Routes>
       </div>
     )
