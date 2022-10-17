@@ -18,8 +18,6 @@ class EventList extends React.Component {
               />
           ))}
         </ul>
-        <h2>Inbox</h2>
-
       </div>
     )
   }
