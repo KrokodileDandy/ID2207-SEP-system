@@ -4,5 +4,5 @@ import App from '../App';
 test('renders the landing page', () => {
   render(<App />);
 
-  expect(screen.getByRole("heading", {level: 1})).toHaveTextContent("SEP Container");
+  expect(screen.getByRole("heading", {level: 1})).toHaveTextContent("Login");
 });
