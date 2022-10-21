@@ -34,7 +34,6 @@ class InboxItem extends React.Component {
         <br/>
         <button onClick={this.onClickApprove}>Approve</button><button onClick={this.onClickReject}>Reject</button>
         <br/>
-        <br/>
       </li>
     )
   }

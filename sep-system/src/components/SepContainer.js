@@ -60,7 +60,10 @@ class SepContainer extends React.Component {
       id: uuidv4(),
       name: name,
       client: client,
-      date: date
+      date: date,
+      budget: "",
+      preferences: "",
+      approved: false
     };
     this.setState({
       eventPlans: [...this.state.eventPlans, newEvent]
@@ -90,7 +93,7 @@ class SepContainer extends React.Component {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/home" element={<Home />}/>
-          <Route path="/inbox" element={<Inbox />}/>
+          <Route path="/inbox" element={<Inbox eventPlans={this.state.eventPlans} addEventProps={this.addEventItem}/>}/>
         </Routes>
       </div>
     )
