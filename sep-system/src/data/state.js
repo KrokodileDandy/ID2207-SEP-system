@@ -21,20 +21,77 @@ var dbData = {
             password: "EmployeePassword",
         },
         {
+            username: "AdministrationDepartmentManager",
+            password: "AdministrationDepartmentManagerPassword",
+        },
+        {
             username: "CustomerServiceManager",
             password: "CustomerServiceManagerPassword",
         },
-    ],
-    eventPlans: [
         {
-            name: "Wedding - Mr. John Smith and Ms. Svenja Swan",
-            client: "Mr. Smith",
-            date: "31.10.2022"
+            username: "CustomerService",
+            password: "CustomerServicePassword",
         },
         {
+            username: "FinancialManager",
+            password: "FinancialManagerPassword",
+        },
+        {
+            username: "ServiceManager",
+            password: "ServiceManagerPassword",
+        },
+        {
+            username: "HumanResources",
+            password: "HumanResourcesPassword",
+        }
+    ],
+    role: { 
+        ProductionManager: ["todos"],
+        Employee: [],
+        AdministrationDepartmentManager: ['inbox'],
+        CustomerServiceManager: ["eventPlans", 'inbox'],
+        CustomerService: ['eventPlans'],
+        FinancialManager: ['inbox',],
+        ServiceManager: ['todos'],
+        HumanResources: [],
+
+    },
+    eventPlans: [
+        {
+            id: uuidv4(),
+            name: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            client: "Mr. Smith",
+            date: "31.10.2022",
+            budget: "250000 SEK",
+            preferences: "Flowers, food, band, ceremony, facility",
+            approved: true
+        },
+        {
+            id: uuidv4(),
             name: "Funeral - Mr. Gerald Smith",
             client: "Mr. Smith",
-            date: "30.10.2022"
+            date: "30.10.2022",
+            budget: "20000 SEK",
+            preferences: "Food, flowers",
+            approved: true
+        },
+        {
+            id: uuidv4(),
+            name: "Birthday - Mr. Liam Cooper",
+            client: "Mr. Smith",
+            date: "01.11.2022",
+            budget: "10000 SEK",
+            preferences: "Food, drinks, show, band, party",
+            approved: false
+        },
+        {
+            id: uuidv4(),
+            name: "Anniversary - Mr. Steve Nash and Ms. Sarah Nash",
+            client: "Mr. Nash",
+            date: "02.11.2022",
+            budget: "15000 SEK",
+            preferences: "Food, flowers",
+            approved: false
         }
     ],
     // Event application by the key managers
@@ -63,7 +120,7 @@ var dbData = {
             title: "Task 2",
             completed: false
         }
-    ]
+    ],
 };
 
 export {dbData};

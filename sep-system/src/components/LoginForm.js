@@ -38,7 +38,7 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        checkUsernameAndPassword() ? navigate("/tasks") : alert("Invalid username or password");
+        checkUsernameAndPassword() ? navigate("/home") : alert("Invalid username or password");
     };
 
     return (

@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
+import Inbox from "../pages/Inbox";
 
 // Components
 import NavBar from "./Navbar";
@@ -54,6 +55,21 @@ class SepContainer extends React.Component {
     })
   }
 
+  addEventItem = (name, client, date) => {
+    const newEvent = {
+      id: uuidv4(),
+      name: name,
+      client: client,
+      date: date,
+      budget: "",
+      preferences: "",
+      approved: false
+    };
+    this.setState({
+      eventPlans: [...this.state.eventPlans, newEvent]
+    });
+  };
+
   render() {
     return (
       <div>
@@ -61,7 +77,11 @@ class SepContainer extends React.Component {
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/events" element={
-            <EventList eventPlans={this.state.eventPlans} />}></Route>
+            <EventList 
+              eventPlans={this.state.eventPlans} 
+              addEventProps={this.addEventItem}
+              />}>
+          </Route>
           <Route path="/tasks" element={
             <TodoList
               todos={this.state.todos}
@@ -73,6 +93,7 @@ class SepContainer extends React.Component {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/home" element={<Home />}/>
+          <Route path="/inbox" element={<Inbox eventPlans={this.state.eventPlans} addEventProps={this.addEventItem}/>}/>
         </Routes>
       </div>
     )
