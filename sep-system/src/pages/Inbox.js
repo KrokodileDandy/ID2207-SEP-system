@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import InboxItem from "../components/InboxItem";
 import { dbData } from "../data/state";
 import useAuthenticateContext from "../context/useAuthenticate";
+import BudgetRequestItem from "../components/BudgetRequestItem";
 
 function Inbox() {
     const username  = useContext(useAuthenticateContext);
@@ -39,20 +40,32 @@ function Inbox() {
             </ul>
         }
         {username.username == "FinancialManager" &&
-            <ul>
-                {dbData.eventPlans.map(event => (
-                    !event.approved && 
+            <>
+                <h2>Event requests</h2>
+                <ul>
+                    {dbData.eventPlans.map(event => (
+                        !event.approved && 
+                        <>
+                            <InboxItem
+                                key={event.id}
+                                event={event} 
+                            />
+                            <button>Give financial feedback</button>
+                            <br/>
+                            <br/>
+                        </>
+                    ))}
+                </ul>
+                <h2>Budget requests</h2>
+                {dbData.budgetRequests.map(request => (
                     <>
-                        <InboxItem
-                            key={event.id}
-                            event={event} 
+                        <BudgetRequestItem
+                            key={request.id}
+                            event={request} 
                         />
-                        <button>Give financial feedback</button>
-                        <br/>
-                        <br/>
                     </>
                 ))}
-            </ul>
+            </>
         }
     </div>
     );
