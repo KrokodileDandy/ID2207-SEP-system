@@ -121,6 +121,15 @@ var dbData = {
             completed: false
         }
     ],
+    budgetRequests: [
+        {
+            id: uuidv4(),
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            fromDepartment: "",
+            newBudget: "275000 SEK",
+            description: "There are not many available bands for so it's more expensive than first anticipated"
+        }
+    ]
 };
 
 export {dbData};
