@@ -57,8 +57,8 @@ var dbData = {
         CustomerService: ['eventPlans','inbox'],
         FinancialManager: ['inbox',],
         ServiceManager: ['todos'],
-        HumanResources: ['inbox'],
-        Admin: ['inbox', 'eventPlans', 'todos', 'budgetRequests']
+        HumanResources: ['inbox','hiringRequests','jobPostings'],
+        Admin: ['inbox', 'eventPlans', 'todos', 'budgetRequests', 'hiringRequests', 'jobPostings']
     },
     eventRequests: [
         {
@@ -151,6 +151,27 @@ var dbData = {
             fromDepartment: "Decoration",
             price: "1.000",
             comment: "The flowers the client wants seem to be exotic, we hence can't use the default pricing."
+        }
+    ],
+    hiringRequests: [
+        {
+            id: uuidv4(),
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            role: "Florist",
+            type: "Freelancer",
+            fromDepartment: "Decoration",
+            comment: "We need a specialized professional for the exotic plants."
+        }
+    ],
+    jobPostings: [
+        {
+            id: uuidv4(),
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            role: "Band Technician",
+            type: "Freelancer",
+            fromDepartment: "Audio",
+            comment: "We need a specialized professional for the exotic plants.",
+            status: "Open"
         }
     ]
 };

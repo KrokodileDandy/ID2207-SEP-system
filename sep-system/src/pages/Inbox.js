@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import InboxItem from "../components/InboxItem";
 import useAuthenticateContext from "../context/useAuthenticate";
 import BudgetRequestInboxItem from "../components/BudgetRequestInboxItem";
+import HiringRequestInboxItem from "../components/HiringRequestInboxItem";
 
 function Inbox(props) {
     const username  = useContext(useAuthenticateContext);
@@ -71,6 +72,23 @@ function Inbox(props) {
                                 key={request.id}
                                 event={request} 
                             />
+                        </>
+                    ))}
+                </ul>
+            </div>
+        }
+        {username.username == "HumanResources" | username.username == "Admin" &&
+            <div>
+                <h2>Hiring Requests</h2>
+                <ul>
+                    {props.hiringRequests.map(request => (
+                        !request.approved && 
+                        <>
+                            <HiringRequestInboxItem
+                                key={request.id}
+                                request={request} 
+                            />
+                            <br/>
                         </>
                     ))}
                 </ul>
