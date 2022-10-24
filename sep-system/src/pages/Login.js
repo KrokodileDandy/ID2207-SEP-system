@@ -9,7 +9,7 @@ const Login = () => {
         <LoginForm/>
 
         <h1>Create user</h1>
-        <p>Create a new user if you do not already have an existing account</p>
+        <p>The system doesn't support creating users at the moment. Contact an administrator to create an account for you.</p>
     </div>
   );
 }

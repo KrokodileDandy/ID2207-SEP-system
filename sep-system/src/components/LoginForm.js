@@ -42,7 +42,7 @@ function LoginForm() {
     };
 
     return (
-      <div>
+      <div className="container">
         <form
           onSubmit={e => handleSubmit(e)}
           className="form-container">
@@ -51,6 +51,7 @@ function LoginForm() {
                 name="username"
                 type="text"
                 placeholder="Username"
+                className="input-text"
                 value={username}
                 onChange={e => handleOnChangeUsername(e)} />
             <input
@@ -58,6 +59,7 @@ function LoginForm() {
                 name="password"
                 type="textarea"
                 placeholder="Password"
+                className="input-text"
                 value={password}
                 onChange={e => handleOnChangePassword(e)} />
             <button>Login</button>
