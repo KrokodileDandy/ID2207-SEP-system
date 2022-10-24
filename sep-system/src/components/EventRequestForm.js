@@ -43,8 +43,8 @@ class EventRequestForm extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Add a new event request:</h2>
+      <div className="container">
+        <h2>Add a new event request</h2>
         <form
           onSubmit={this.handleSubmit}
           className="form-container">
@@ -53,6 +53,7 @@ class EventRequestForm extends Component {
                 name="event"
                 type="textarea"
                 placeholder="Event Name..."
+                className="input-text"
                 value={this.state.name}
                 onChange={this.onChangeName} />
             <input
@@ -60,6 +61,7 @@ class EventRequestForm extends Component {
                 name="client"
                 type="textarea"
                 placeholder="Client..."
+                className="input-text"
                 value={this.state.client}
                 onChange={this.onChangeClient} />
             <input
@@ -67,6 +69,7 @@ class EventRequestForm extends Component {
                 name="date"
                 type="textarea"
                 placeholder="Date..."
+                className="input-text"
                 value={this.state.date}
                 onChange={this.onChangeDate} />
             <button>Add</button>

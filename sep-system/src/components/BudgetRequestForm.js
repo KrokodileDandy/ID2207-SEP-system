@@ -33,9 +33,8 @@ class BudgetRequestForm extends Component {
 
   render() {
     return (
-      <div>
-        Add a new budget request:
-        <div className="container">
+      <div className="container">
+        <h2>Add a new budget request</h2>
         <form
           onSubmit={this.handleSubmit}
           className="form-container">
@@ -81,7 +80,6 @@ class BudgetRequestForm extends Component {
               onChange={this.onChange} />
             <button>Add</button>
         </form>
-        </div>
       </div>
     )
   }

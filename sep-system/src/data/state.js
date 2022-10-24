@@ -50,26 +50,48 @@ var dbData = {
         }
     ],
     role: { 
-        ProductionManager: ['todos','inbox'],
-        Employee: ['inbox', 'budgetRequests'],
+        ProductionManager: [
+            'inbox',
+            'eventApplications',
+            'activityPlans',
+            'budgetRequests',
+            'hiringRequests'
+        ],
+        Employee: [
+            'todos',
+            'budgetRequests'
+        ],
         AdministrationDepartmentManager: ['inbox'],
-        CustomerServiceManager: ['eventPlans', 'inbox'],
-        CustomerService: ['eventPlans','inbox'],
-        FinancialManager: ['inbox',],
-        ServiceManager: ['todos'],
-        HumanResources: ['inbox','hiringRequests','jobPostings'],
-        Admin: ['inbox', 'eventPlans', 'todos', 'budgetRequests', 'hiringRequests', 'jobPostings']
+        CustomerServiceManager: [
+            'eventPlans',
+            'inbox'
+        ],
+        CustomerService: [
+            'eventPlans'
+        ],
+        FinancialManager: ['inbox'],
+        ServiceManager: [
+            'inbox',
+            'eventApplications',
+            'activityPlans',
+            'budgetRequests',
+            'hiringRequests'
+        ],
+        HumanResources: [
+            'inbox',
+            'jobPostings'
+        ],
+        Admin: [
+            'inbox',
+            'eventPlans',
+            'eventApplications',
+            'activityPlans',
+            'todos',
+            'budgetRequests',
+            'hiringRequests',
+            'jobPostings'
+        ]
     },
-    eventRequests: [
-        {
-            id: uuidv4(),
-            name: "Wedding - Mr. Norbert Pfaffer and Ms. Elizabeth Hilde",
-            client: "Mr. Pfaffer",
-            date: "16.02.2023",
-            budget: "150000 SEK",
-            preferences: "Flowers, food, band, ceremony, facility"
-        }
-    ],
     eventPlans: [
         {
             id: uuidv4(),
@@ -112,27 +134,58 @@ var dbData = {
     eventApplications: [
         {
             event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
-            name: "Wedding - Mr. Smith and Ms. Swan",
+            name: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production",
+            status: "Open"
+        },
+        {
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            name: "Wedding - Mr. John Smith and Ms. Svenja Swan: Service",
+            status: "Open"
         }
     ],
     // Task list of each department
     activityPlans: [
         {
-            event: "Wedding - Mr. John Smith and Ms. Svenja Swan"
+            eventApplication: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production",
+            name: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production (Decoration)",
+            fromDepartment: "Decoration"
         }
     ],
     todos: [
         {
             id: uuidv4(),
-            activityPlan: null,
-            title: "Task 1",
+            activityPlan: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production (Decoration)",
+            title: "Create tasks for this event",
+            description: "",
             completed: true
         },
         {
             id: uuidv4(),
-            activityPlan: null,
-            title: "Task 2",
+            activityPlan: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production (Decoration)",
+            title: "Hire a specialized florist",
+            description: "",
             completed: false
+        },
+        {
+            id: uuidv4(),
+            activityPlan: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production (Decoration)",
+            title: "Create a hiring request for the florist",
+            description: "",
+            completed: true
+        },
+        {
+            id: uuidv4(),
+            activityPlan: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production (Decoration)",
+            title: "Hire a band technician",
+            description: "",
+            completed: false
+        },
+        {
+            id: uuidv4(),
+            activityPlan: "Wedding - Mr. John Smith and Ms. Svenja Swan: Production (Decoration)",
+            title: "Create a hiring request for the band technician",
+            description: "Job posting is online",
+            completed: true
         }
     ],
     budgetRequests: [

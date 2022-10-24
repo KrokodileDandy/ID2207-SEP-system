@@ -14,10 +14,12 @@ import Inbox from "../pages/Inbox";
 // Components
 import NavBar from "./Navbar";
 import EventList from "./EventList";
+import EventApplicationList from "./EventApplicationList";
 import TodoList from "./TodoList";
 import BudgetRequestList from "./BudgetRequestList";
 import HiringRequestList from "./HiringRequestList";
 import JobPostingsList from "./JobPostingsList";
+import ActivityPlansList from "./ActivityPlansList";
 
 class SepContainer extends React.Component {
   state = dbData;
@@ -36,10 +38,12 @@ class SepContainer extends React.Component {
     }))
   };
 
-  addTodoItem = title => {
+  addTodoItem = (title, description, activityPlan) => {
     const newTodo = {
       id: uuidv4(),
       title: title,
+      description: description,
+      activityPlan: activityPlan,
       completed: false
     };
     this.setState({
@@ -70,6 +74,30 @@ class SepContainer extends React.Component {
     };
     this.setState({
       eventPlans: [...this.state.eventPlans, newEvent]
+    });
+  };
+
+  addEventApplicationItem = (event, name, status) => {
+    const newEventApplication = {
+      id: uuidv4(),
+      event: event,
+      name: name,
+      status: status
+    };
+    this.setState({
+      eventApplications: [...this.state.eventApplications, newEventApplication]
+    });
+  };
+
+  addActivityPlanItem = (event, name, department) => {
+    const newActivityPlan = {
+      id: uuidv4(),
+      event: event,
+      name: name,
+      department: department
+    };
+    this.setState({
+      activityPlans: [...this.state.activityPlans, newActivityPlan]
     });
   };
 
@@ -127,6 +155,16 @@ class SepContainer extends React.Component {
               eventPlans={this.state.eventPlans} 
               addEventProps={this.addEventItem}
               />}>
+          </Route>
+          <Route path="/eventApplications" element={
+            <EventApplicationList
+              eventApplications={this.state.eventApplications}
+              addEventApplicationProps={this.addEventApplicationItem} />}>
+          </Route>
+          <Route path="/activityPlans" element={
+            <ActivityPlansList
+              activityPlans={this.state.activityPlans}
+              addActivityPlanProps={this.addActivityPlanItem} />}>
           </Route>
           <Route path="/tasks" element={
             <TodoList

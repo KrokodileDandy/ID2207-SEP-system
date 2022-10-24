@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class TodoForm extends Component {
   state = {
     title: "",
-    description: ""
+    description: "",
+    activityPlan: ""
   };
 
   onChange = e => {
@@ -15,8 +16,8 @@ class TodoForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.title.trim()) {
-      this.props.addTodoProps(this.state.title);
-      this.setState({title: ""});
+      this.props.addTodoProps(this.state.title, this.state.description, this.state.activityPlan);
+      this.setState({title: "", description: "", activityPlan: ""});
     } else {
       alert("Please write a title");
     }
@@ -24,25 +25,35 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <div>
-        Add a new task:
+      <div className="container">
+        <h2>Add a new task</h2>
         <form
           onSubmit={this.handleSubmit}
           className="form-container">
             <input 
-                aria-label="task title"
-                name="title"
-                type="text"
-                placeholder="Add Todo..."
-                value={this.state.title}
-                onChange={this.onChange} />
+              aria-label="task title"
+              name="title"
+              type="text"
+              placeholder="Add Todo..."
+              className="input-text"
+              value={this.state.title}
+              onChange={this.onChange} />
             <input
-                aria-label="task description"
-                name="description"
-                type="textarea"
-                placeholder="Description..."
-                value={this.state.description}
-                onChange={this.onChange} />
+              aria-label="task description"
+              name="description"
+              type="textarea"
+              placeholder="Description..."
+              className="input-text"
+              value={this.state.description}
+              onChange={this.onChange} />
+            <input
+              aria-label="activity plan"
+              name="activityPlan"
+              type="textarea"
+              placeholder="Activity plan..."
+              className="input-text"
+              value={this.state.activityPlan}
+              onChange={this.onChange} />
             <button>Add</button>
         </form>
       </div>

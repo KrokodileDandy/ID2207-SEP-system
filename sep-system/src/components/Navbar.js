@@ -24,6 +24,16 @@ function NavBar() {
                 <Link to="/events">Events</Link>
               </li>
             }
+            {accessList.includes('eventApplications') &&
+              <li>
+                <Link to="/eventApplications">Event Applications</Link>
+              </li>
+            }
+            {accessList.includes('activityPlans') &&
+              <li>
+                <Link to="/activityPlans">Activity Plans</Link>
+              </li>
+            }
             {accessList.includes('budgetRequests') &&
               <li>
                 <Link to="/budgetRequests">Budget Requests</Link>  

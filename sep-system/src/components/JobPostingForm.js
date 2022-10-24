@@ -35,9 +35,8 @@ class JobPostingForm extends Component {
 
   render() {
     return (
-      <div>
-        Add a new job posting:
-        <div className="container">
+      <div className="container">
+        <h2>Add a new job posting</h2>
         <form
           onSubmit={this.handleSubmit}
           className="form-container">
@@ -83,7 +82,6 @@ class JobPostingForm extends Component {
               onChange={this.onChange} />
             <button>Add</button>
         </form>
-        </div>
       </div>
     )
   }
