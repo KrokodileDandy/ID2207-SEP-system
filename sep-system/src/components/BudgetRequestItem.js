@@ -29,16 +29,19 @@ class BudgetRequestItem extends React.Component {
     }
 
     render() {
-        const { event, newBudget, description } = this.props.event;
+        const { event, item, price, comment, fromDepartment } = this.props.event;
         return (
             <li>
-                Event: {event} 
+                Event: {event}
+                <br />
+                Item: {item}
                 <br/> 
-                newBudget: {newBudget} 
+                Price: {price} SEK
                 <br/>
-                Description: {description} 
+                Comment: {comment} 
                 <br/>
-                <br/>
+                Requesting department: {fromDepartment}
+                <br />
                 <button onClick={this.onClick}>See original event request info</button>
             </li>
         )

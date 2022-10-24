@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import InboxItem from "../components/InboxItem";
-import { dbData } from "../data/state";
 import useAuthenticateContext from "../context/useAuthenticate";
 import BudgetRequestInboxItem from "../components/BudgetRequestInboxItem";
 
-function Inbox() {
+function Inbox(props) {
     const username  = useContext(useAuthenticateContext);
     return (
     <div>
@@ -14,7 +13,7 @@ function Inbox() {
                 <h2>Event Requests</h2>
                 <p><i>Need to be approved by the customer service manager.</i></p>
                 <ul>
-                    {dbData.eventPlans.map(event => (
+                    {props.eventPlans.map(event => (
                     !event.approved &&
                     <>
                         <InboxItem
@@ -32,7 +31,7 @@ function Inbox() {
                 <h2>Event Request - Administrative</h2>
                 <p><i>Need to be processed by the administration department manager.</i></p>
                 <ul>
-                    {dbData.eventPlans.map(event => (
+                    {props.eventPlans.map(event => (
                         !event.approved &&
                         <>
                             <InboxItem
@@ -51,7 +50,7 @@ function Inbox() {
             <div>
                 <h2>Event Requests - Financial</h2>
                 <ul>
-                    {dbData.eventPlans.map(event => (
+                    {props.eventPlans.map(event => (
                         !event.approved && 
                         <>
                             <InboxItem
@@ -66,7 +65,7 @@ function Inbox() {
                 </ul>
                 <h2>Budget Requests</h2>
                 <ul>
-                    {dbData.budgetRequests.map(request => (
+                    {props.budgetRequests.map(request => (
                         <>
                             <BudgetRequestInboxItem
                                 key={request.id}

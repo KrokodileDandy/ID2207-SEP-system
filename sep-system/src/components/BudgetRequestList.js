@@ -2,14 +2,14 @@ import React from "react";
 
 // Components
 import TodoItem from "./BudgetRequestItem";
-//import TodoForm from "./BudgetRequestForm";
+import BudgetRequestForm from "./BudgetRequestForm";
 
 class BudgetRequestList extends React.Component {
   render() {
     return (
       <div>
         <h1>Budget Requests</h1>
-        {/**<BudgetRequestForm addTodoProps={this.props.addTodoProps} />*/}
+        <BudgetRequestForm addBudgetRequestProps={this.props.addBudgetRequestProps} />
         <ul>
           {this.props.budgetRequests.map(budgetRequest => (
             <TodoItem

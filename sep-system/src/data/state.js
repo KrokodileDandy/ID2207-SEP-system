@@ -139,9 +139,18 @@ var dbData = {
         {
             id: uuidv4(),
             event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
-            fromDepartment: "",
-            newBudget: "275000 SEK",
-            description: "There are not many available bands for so it's more expensive than we first anticipated."
+            item: "Band",
+            fromDepartment: "Audio",
+            price: "275.000",
+            comment: "There are not many available bands for so it's more expensive than we first anticipated."
+        },
+        {
+            id: uuidv4(),
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            item: "Exotic flowers",
+            fromDepartment: "Decoration",
+            price: "1.000",
+            comment: "The flowers the client wants seem to be exotic, we hence can't use the default pricing."
         }
     ]
 };

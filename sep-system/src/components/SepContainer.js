@@ -71,6 +71,20 @@ class SepContainer extends React.Component {
     });
   };
 
+  addBudgetRequestItem = (event, item, price, department, comment) => {
+    const newBudgetRequest = {
+      id: uuidv4(),
+      event: event,
+      item: item,
+      price: price,
+      department: department,
+      comment: comment,
+    };
+    this.setState({
+      budgetRequests: [...this.state.budgetRequests, newBudgetRequest]
+    });
+  };
+
   render() {
     return (
       <div>
@@ -92,13 +106,18 @@ class SepContainer extends React.Component {
           </Route>
           <Route path="/budgetRequests" element={
             <BudgetRequestList
-              budgetRequests={this.state.budgetRequests} />}>
+              budgetRequests={this.state.budgetRequests}
+              addBudgetRequestProps={this.addBudgetRequestItem} />}>
           </Route>
           <Route path="/about" element={<About />}>
           </Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/home" element={<Home />}/>
-          <Route path="/inbox" element={<Inbox eventPlans={this.state.eventPlans} addEventProps={this.addEventItem}/>}/>
+          <Route path="/inbox" element={
+            <Inbox
+            eventPlans={this.state.eventPlans}
+            budgetRequests={this.state.budgetRequests}
+            addEventProps={this.addEventItem} />}/>
         </Routes>
       </div>
     )
