@@ -7,7 +7,7 @@ function NavBar() {
     const username  = useContext(useAuthenticateContext);
     const list = ['ProductionManager', 'Employee', 'CustomerServiceManager', 
     "AdministrationDepartmentManager", "CustomerService", "FinancialManager", 
-    "ServiceManager", "HumanResources"];
+    "ServiceManager", "HumanResources", "Admin"];
     const accessList = dbData.role[username.username];
     return (
       list.includes(username.username) &&
@@ -24,6 +24,10 @@ function NavBar() {
                 <Link to="/events">Events</Link>
               </li>
             }
+            {accessList.includes('budgetRequests') &&
+              <li>
+                <Link to="/budgetRequests">Budget Requests</Link>  
+              </li>}
             {accessList.includes('todos') &&
               <li>
                 <Link to="/tasks">Tasks</Link>

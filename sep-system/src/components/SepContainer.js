@@ -15,6 +15,7 @@ import Inbox from "../pages/Inbox";
 import NavBar from "./Navbar";
 import EventList from "./EventList";
 import TodoList from "./TodoList";
+import BudgetRequestList from "./BudgetRequestList";
 
 class SepContainer extends React.Component {
   state = dbData;
@@ -88,6 +89,10 @@ class SepContainer extends React.Component {
               handleChangeProps={this.handleChange}
               addTodoProps={this.addTodoItem}
               setUpdate={this.setUpdate} />}>
+          </Route>
+          <Route path="/budgetRequests" element={
+            <BudgetRequestList
+              budgetRequests={this.state.budgetRequests} />}>
           </Route>
           <Route path="/about" element={<About />}>
           </Route>

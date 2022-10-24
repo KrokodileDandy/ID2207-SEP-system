@@ -38,6 +38,7 @@ class BudgetRequestItem extends React.Component {
                 <br/>
                 Description: {description} 
                 <br/>
+                <button onClick={this.onClickApprove}>Approve</button><button onClick={this.onClickReject}>Reject</button>
                 <br/>
                 <button onClick={this.onClick}>See original event request info</button>
             </li>
