@@ -1,49 +1,56 @@
 import React, { useContext } from "react";
 import InboxItem from "../components/InboxItem";
-import { dbData } from "../data/state";
 import useAuthenticateContext from "../context/useAuthenticate";
-import BudgetRequestItem from "../components/BudgetRequestItem";
+import BudgetRequestInboxItem from "../components/BudgetRequestInboxItem";
 
-function Inbox() {
+function Inbox(props) {
     const username  = useContext(useAuthenticateContext);
     return (
     <div>
         <h1>Inbox</h1>
-        {username.username == "CustomerServiceManager" &&
-            <ul>
-                {dbData.eventPlans.map(event => (
-                !event.approved &&
-                <>
-                    <InboxItem
-                        key={event.id}
-                        event={event} 
-                    />
-                    <br/>
-                </>
-                ))}
-            </ul>
-        }
-        {username.username == "AdministrationDepartmentManager" &&
-            <ul>
-                {dbData.eventPlans.map(event => (
+        {username.username == "CustomerServiceManager" | username.username == "Admin" &&
+            <div>
+                <h2>Event Requests</h2>
+                <p><i>Need to be approved by the customer service manager.</i></p>
+                <ul>
+                    {props.eventPlans.map(event => (
                     !event.approved &&
                     <>
                         <InboxItem
                             key={event.id}
                             event={event} 
                         />
-                        <button>Read financial feedback</button>
-                        <br/>
                         <br/>
                     </>
-                ))}
-            </ul>
+                    ))}
+                </ul>
+            </div>
         }
-        {username.username == "FinancialManager" &&
-            <>
-                <h2>Event requests</h2>
+        {username.username == "AdministrationDepartmentManager" | username.username == "Admin" &&
+            <div>
+                <h2>Event Request - Administrative</h2>
+                <p><i>Need to be processed by the administration department manager.</i></p>
                 <ul>
-                    {dbData.eventPlans.map(event => (
+                    {props.eventPlans.map(event => (
+                        !event.approved &&
+                        <>
+                            <InboxItem
+                                key={event.id}
+                                event={event} 
+                            />
+                            <button>Read financial feedback</button>
+                            <br/>
+                            <br/>
+                        </>
+                    ))}
+                </ul>
+            </div>
+        }
+        {username.username == "FinancialManager" | username.username == "Admin" &&
+            <div>
+                <h2>Event Requests - Financial</h2>
+                <ul>
+                    {props.eventPlans.map(event => (
                         !event.approved && 
                         <>
                             <InboxItem
@@ -56,16 +63,18 @@ function Inbox() {
                         </>
                     ))}
                 </ul>
-                <h2>Budget requests</h2>
-                {dbData.budgetRequests.map(request => (
-                    <>
-                        <BudgetRequestItem
-                            key={request.id}
-                            event={request} 
-                        />
-                    </>
-                ))}
-            </>
+                <h2>Budget Requests</h2>
+                <ul>
+                    {props.budgetRequests.map(request => (
+                        <>
+                            <BudgetRequestInboxItem
+                                key={request.id}
+                                event={request} 
+                            />
+                        </>
+                    ))}
+                </ul>
+            </div>
         }
     </div>
     );

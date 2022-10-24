@@ -29,7 +29,7 @@ class BudgetRequestItem extends React.Component {
     }
 
     render() {
-        const { event, item, price, comment, fromDepartment } = this.props.event;
+        const { event, item, price, fromDepartment, comment } = this.props.event;
         return (
             <li>
                 Event: {event}
@@ -42,6 +42,8 @@ class BudgetRequestItem extends React.Component {
                 <br/>
                 Requesting department: {fromDepartment}
                 <br />
+                <button onClick={this.onClickApprove}>Approve</button><button onClick={this.onClickReject}>Reject</button>
+                <br/>
                 <button onClick={this.onClick}>See original event request info</button>
             </li>
         )

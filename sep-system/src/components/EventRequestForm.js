@@ -44,7 +44,7 @@ class EventRequestForm extends Component {
   render() {
     return (
       <div>
-        <h2>Add a new event:</h2>
+        <h2>Add a new event request:</h2>
         <form
           onSubmit={this.handleSubmit}
           className="form-container">

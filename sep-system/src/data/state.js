@@ -43,19 +43,33 @@ var dbData = {
         {
             username: "HumanResources",
             password: "HumanResourcesPassword",
+        },
+        {
+            username: "Admin",
+            password: "AdminPassword"
         }
     ],
     role: { 
-        ProductionManager: ["todos"],
-        Employee: [],
+        ProductionManager: ['todos','inbox'],
+        Employee: ['inbox', 'budgetRequests'],
         AdministrationDepartmentManager: ['inbox'],
-        CustomerServiceManager: ["eventPlans", 'inbox'],
-        CustomerService: ['eventPlans'],
+        CustomerServiceManager: ['eventPlans', 'inbox'],
+        CustomerService: ['eventPlans','inbox'],
         FinancialManager: ['inbox',],
         ServiceManager: ['todos'],
-        HumanResources: [],
-
+        HumanResources: ['inbox'],
+        Admin: ['inbox', 'eventPlans', 'todos', 'budgetRequests']
     },
+    eventRequests: [
+        {
+            id: uuidv4(),
+            name: "Wedding - Mr. Norbert Pfaffer and Ms. Elizabeth Hilde",
+            client: "Mr. Pfaffer",
+            date: "16.02.2023",
+            budget: "150000 SEK",
+            preferences: "Flowers, food, band, ceremony, facility"
+        }
+    ],
     eventPlans: [
         {
             id: uuidv4(),
@@ -97,14 +111,14 @@ var dbData = {
     // Event application by the key managers
     eventApplications: [
         {
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
             name: "Wedding - Mr. Smith and Ms. Swan",
-            by: "Production Manager"
         }
     ],
     // Task list of each department
     activityPlans: [
         {
-            name: "Wedding - Mr. Smith and Ms. Swan",
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan"
         }
     ],
     todos: [
@@ -125,9 +139,18 @@ var dbData = {
         {
             id: uuidv4(),
             event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
-            fromDepartment: "",
-            newBudget: "275000 SEK",
-            description: "There are not many available bands for so it's more expensive than first anticipated"
+            item: "Band",
+            fromDepartment: "Audio",
+            price: "275.000",
+            comment: "There are not many available bands for so it's more expensive than we first anticipated."
+        },
+        {
+            id: uuidv4(),
+            event: "Wedding - Mr. John Smith and Ms. Svenja Swan",
+            item: "Exotic flowers",
+            fromDepartment: "Decoration",
+            price: "1.000",
+            comment: "The flowers the client wants seem to be exotic, we hence can't use the default pricing."
         }
     ]
 };
