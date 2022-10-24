@@ -16,6 +16,8 @@ import NavBar from "./Navbar";
 import EventList from "./EventList";
 import TodoList from "./TodoList";
 import BudgetRequestList from "./BudgetRequestList";
+import HiringRequestList from "./HiringRequestList";
+import JobPostingsList from "./JobPostingsList";
 
 class SepContainer extends React.Component {
   state = dbData;
@@ -84,6 +86,35 @@ class SepContainer extends React.Component {
       budgetRequests: [...this.state.budgetRequests, newBudgetRequest]
     });
   };
+  
+  addHiringRequestItem = (event, role, type, department, comment) => {
+    const newHiringRequest = {
+      id: uuidv4(),
+      event: event,
+      role: role,
+      type: type,
+      department: department,
+      comment: comment,
+    };
+    this.setState({
+      hiringRequests: [...this.state.hiringRequests, newHiringRequest]
+    });
+  };
+
+  addJobPostingItem = (event, role, type, department, comment, status) => {
+    const newJobPosting = {
+      id: uuidv4(),
+      event: event,
+      role: role,
+      type: type,
+      department: department,
+      comment: comment,
+      status: status
+    };
+    this.setState({
+      jobPostings: [...this.state.jobPostings, newJobPosting]
+    });
+  };
 
   render() {
     return (
@@ -109,6 +140,16 @@ class SepContainer extends React.Component {
               budgetRequests={this.state.budgetRequests}
               addBudgetRequestProps={this.addBudgetRequestItem} />}>
           </Route>
+          <Route path="/hiringRequests" element={
+            <HiringRequestList
+              hiringRequests={this.state.hiringRequests}
+              addHiringRequestProps={this.addHiringRequestItem} />}>
+          </Route>
+          <Route path="/jobPostings" element={
+            <JobPostingsList
+              jobPostings={this.state.jobPostings}
+              addJobPostingProps={this.addJobPostingItem} />}>
+          </Route>
           <Route path="/about" element={<About />}>
           </Route>
           <Route path="*" element={<NotFound />}></Route>
@@ -117,6 +158,7 @@ class SepContainer extends React.Component {
             <Inbox
             eventPlans={this.state.eventPlans}
             budgetRequests={this.state.budgetRequests}
+            hiringRequests={this.state.hiringRequests}
             addEventProps={this.addEventItem} />}/>
         </Routes>
       </div>

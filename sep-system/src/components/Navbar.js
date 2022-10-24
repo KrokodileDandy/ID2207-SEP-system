@@ -33,6 +33,14 @@ function NavBar() {
                 <Link to="/tasks">Tasks</Link>
               </li>
             }
+            {accessList.includes('hiringRequests') &&
+              <li>
+                <Link to="/hiringRequests">Hiring Requests</Link>  
+              </li>}
+              {accessList.includes('jobPostings') &&
+              <li>
+                <Link to="/jobPostings">Job Postings</Link>  
+              </li>}
             {accessList.includes('inbox') &&
               <li>
                 <Link to="/inbox">Inbox</Link>
