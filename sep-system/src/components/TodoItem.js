@@ -20,7 +20,7 @@ class TodoItem extends React.Component {
   }
 
   render() {
-    const { completed, id, title } = this.props.todo;
+    const { completed, id, title, description, activityPlan } = this.props.todo;
     let viewMode = {};
     let editMode = {};
 
@@ -37,7 +37,8 @@ class TodoItem extends React.Component {
             className={styles.checkbox}
             checked={completed}
             onChange={() => this.props.handleChangeProps(id)} />
-            {title}
+            {title} <span className="activityPlan">({activityPlan})</span><br />
+            {description}
         </div>
         <input type="text"
           style={editMode}
